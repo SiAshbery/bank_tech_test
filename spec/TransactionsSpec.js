@@ -18,4 +18,13 @@ describe("Transactions", function() {
     expect(transactions.getTransactionHistory()).toEqual([ transaction ])
   });
 
+  it("returns a balance", function() {
+    expect(transactions.getBalance()).toEqual(0)
+  })
+
+  it("returns a balance based on transaction history", function() {
+    transactions.recordTransaction(100, "date", transaction);
+    expect(transactions.getBalance()).toEqual(100)
+  })
+
 });
