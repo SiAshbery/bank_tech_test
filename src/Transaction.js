@@ -1,13 +1,16 @@
 function Transaction() {
-  this.record = {}
 };
 
 Transaction.prototype.getRecord = function() {
-  return this.record
+  if(this.record) {
+    return this.record
+  } else {
+    throw new Error("Record has yet to been written")
+  };
 };
 
 Transaction.prototype.makeRecord = function(amount, date) {
-  if(this.record.hasOwnProperty("amount")) {
+  if(this.record) {
     throw new Error("Cannot overwrite a transaction once recorded")
   } else {
     this.record = { amount: amount, date: date }

@@ -14,7 +14,11 @@ describe("Transaction", function(){
 
   it("Can't overwrite a record once recorded", function(){
     transaction.makeRecord(100, currentDate)
-    expect(function(){transaction.makeRecord(100, currentDate)}).toThrowError("Cannot overwrite a transaction once recorded");
+    expect(function(){ transaction.makeRecord(100, currentDate) }).toThrowError("Cannot overwrite a transaction once recorded");
+  })
+
+  it("Can't return a record until one is made", function(){
+    expect(function(){ transaction.getRecord() }).toThrowError("Record has yet to been written");
   })
 
 });
