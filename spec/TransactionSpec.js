@@ -35,8 +35,12 @@ describe("Transaction", function(){
       expect(function(){ transaction.writeRecord(100, currentDate) }).toThrowError("Cannot overwrite a transaction once recorded");
     })
 
-    it("Throws error when attempting to get record before it's written", function(){
-      expect(function(){ transaction.getRecord() }).toThrowError("Record has yet to been written");
+    it("Throws error when attempting to get amount attribute before record is written", function(){
+      expect(function(){ transaction.getAmount() }).toThrowError("Record has yet to been written");
+    })
+
+    it("Throws error when attempting to get date attribute before record is written", function(){
+      expect(function(){ transaction.getDate() }).toThrowError("Record has yet to been written");
     })
 
   });

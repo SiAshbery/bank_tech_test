@@ -3,14 +3,6 @@ function Transaction() {
                   recordAlreadyWritten: new Error("Cannot overwrite a transaction once recorded") }
 };
 
-Transaction.prototype.getRecord = function() {
-  if(this.record) {
-    return this.record
-  } else {
-    throw this.errors.recordNotWritten
-  };
-};
-
 Transaction.prototype.getAmount = function() {
   if(this.record) {
     return this.record.amount
@@ -23,7 +15,7 @@ Transaction.prototype.getDate = function() {
   if(this.record) {
     return this.record.date
   } else {
-
+    throw this.errors.recordNotWritten
   };
 };
 
