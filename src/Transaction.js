@@ -9,7 +9,7 @@ Transaction.prototype.getRecord = function() {
   };
 };
 
-Transaction.prototype.makeRecord = function(amount, date) {
+Transaction.prototype.writeRecord = function(amount, date) {
   if(this.record) {
     throw new Error("Cannot overwrite a transaction once recorded")
   } else {

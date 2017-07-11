@@ -2,11 +2,11 @@ function Transactions() {
   this.transactionHistory = []
 }
 
-Transactions.prototype.recordDepositTransaction = function(amount,
+Transactions.prototype.recordTransaction = function(amount,
                                                   date = new Date(),
                                                   transaction = new Transaction()) {
 
-  transaction.makeRecord(amount, date)
+  transaction.writeRecord(amount, date)
   this.transactionHistory.push(transaction)
 
 };

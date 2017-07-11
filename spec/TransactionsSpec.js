@@ -7,10 +7,15 @@ describe("Transactions", function() {
     transaction = new Transaction()
   });
 
-  it("Can make a deposit", function() {
-    spyOn(transaction, "makeRecord");
-    transactions.recordDepositTransaction(100, "date", transaction);
-    expect(transaction.makeRecord).toHaveBeenCalledWith(100, "date");
+  it("Can record a Transaction", function() {
+    spyOn(transaction, "writeRecord");
+    transactions.recordTransaction(100, "date", transaction);
+    expect(transaction.writeRecord).toHaveBeenCalledWith(100, "date");
+  });
+
+  it("Returns transaction history", function() {
+    transactions.recordTransaction(100, "date", transaction)
+    expect(transactions.getTransactionHistory()).toEqual([ transaction ])
   });
 
 });
