@@ -7,6 +7,9 @@ Transaction.prototype.getRecord = function() {
 };
 
 Transaction.prototype.makeRecord = function(amount, date) {
-  this.record = { amount: amount, date: date }
-
-}
+  if(this.record.hasOwnProperty("amount")) {
+    throw new Error("Cannot overwrite a transaction once recorded")
+  } else {
+    this.record = { amount: amount, date: date }
+  };
+};
